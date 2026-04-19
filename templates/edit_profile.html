@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Profile</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* BODY */
+body {
+  background: linear-gradient(135deg, #e6ebf1, #dbeafe);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* NAVBAR */
+.premium-navbar {
+  background: rgba(13, 27, 61, 0.9);
+  padding: 10px 20px;
+}
+
+.premium-navbar .nav-link {
+  color: white !important;
+  margin-left: 15px;
+}
+
+/* CARD */
+.container-box {
+  max-width: 600px;
+  margin: 120px auto;
+}
+
+.card-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* FORM */
+label {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #0d1b3d;
+  color: white;
+}
+
+button:hover {
+  background: #145a9c;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar premium-navbar fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="/">Career Predictor</a>
+
+    <div class="ms-auto">
+      <a class="nav-link d-inline" href="/profile">Profile</a>
+      <a class="nav-link d-inline" href="/logout">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- EDIT FORM -->
+<div class="container-box">
+  <div class="card-box">
+
+    <h3>Edit Profile ✏️</h3>
+
+    <form method="POST" action="/update_profile">
+
+      <label>First Name</label>
+      <input type="text" name="first_name" value="{{ user[2] }}" required>
+
+      <label>Last Name</label>
+      <input type="text" name="last_name" value="{{ user[3] }}">
+
+      <button type="submit">Update Profile</button>
+
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>

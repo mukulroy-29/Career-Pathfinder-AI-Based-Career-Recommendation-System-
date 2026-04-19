@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User explore_roles</title>
+
+<style>
+/* FILTER BAR */
+.filter-bar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+padding:15px 20px;
+background:white;
+border-radius:12px;
+margin:30px;
+}
+
+/* LEFT BUTTONS */
+.left-filters{
+display:flex;
+gap:10px;
+}
+
+.filter-btn{
+padding:6px 14px;
+border-radius:8px;
+border:1px solid rgba(255,255,255,0.2);
+background:transparent;
+color:black;
+cursor:pointer;
+transition:0.3s;
+font-size:13px;
+}
+
+.filter-btn:hover{
+background:gray;
+}
+
+.filter-btn.active{
+background:white;
+border-color:;
+}
+
+.filter-btn.active:hover{
+background:gray;
+}
+
+/* RIGHT BUTTON */
+.add-btn{
+background:#2979ff;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+transition:0.3s;
+}
+
+.add-btn:hover{
+background:#1c5fd4;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: white;
+  color: #0d1b3d;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+body{
+background:linear-gradient(135deg,#020c1b,#0a192f,#112240);
+color:#ccd6f6;
+overflow-x:hidden;
+}
+
+
+header{
+background:#0b1f3f;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position: sticky;  
+  top: 0;             
+  z-index: 1000; 
+}
+
+.search{
+border:1px solid #3b5bd6;
+padding:8px 12px;
+border-radius:6px;
+background:#0b1f3f;
+color:white;
+}
+
+/* SECTION */
+.section{
+padding:25px;
+}
+
+.section h2{
+font-size:15px;
+color:white;
+margin-bottom:12px;
+}
+
+/* ROW */
+.row{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+/* CARD */
+.card{
+background:black;
+padding:8px 12px;
+border-radius:10px;
+display:flex;
+gap:8px;
+align-items:center;
+cursor:pointer;
+position:relative;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* BADGE */
+.badge{
+font-size:11px;
+padding:4px 7px;
+border-radius:6px;
+color:black;
+font-weight:bold;
+}
+
+.aps3{background:#6c757d;}
+.aps4{background:#8e44ad;}
+.aps5{background:#a14ea0;}
+.aps6{background:#0077b6;}
+.el1{background:#6c63ff;}
+.el2{background:#2b9348;}
+.ses1{background:#ff6b35;}
+
+/* POPUP */
+.popup{
+position:absolute;
+top:42px;
+left:0;
+width:340px;
+background:black;
+padding:18px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+display:none;
+z-index:100;
+}
+
+.card:hover .popup{
+display:block;
+}
+
+.popup h3{
+margin:8px 0;
+}
+
+.popup ul{
+padding-left:18px;
+font-size:13px;
+line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div><b>CAREER PATHFINDER</b></div>
+ <div class="nav-links">
+
+<a class="nav-link d-inline" href="http://127.0.0.1:5000/user_font">Home</a>
+  
+    <a href="http://127.0.0.1:5000/user_explore_roles">Explore roles</a>
+    <a href="http://127.0.0.1:5000/user_career_plan">My career plan</a>
+    <a href="http://127.0.0.1:5000/user_skill">My skills</a>
+<a href="http://127.0.0.1:5000/profile">Profile</a>
+	
+  </div>
+
+</header>
+<!-- FILTER BAR -->
+<div class="filter-bar">
+
+  <div class="left-filters">
+    <button class="filter-btn active">Skills</button>
+    <button class="filter-btn">Interests</button>
+    <button class="filter-btn">Filters ▼</button>
+  </div>
+
+  
+  <div class="right-action">
+    <button class="add-btn">Add your skills</button>
+  </div>
+
+</div>
+<div id="app"></div>
+
+
+<script>
+
+/* ================== ALL ROLES ================== */
+
+const sections = [
+
+{
+title:"Applied AI",
+roles:[
+["aps6","AI Engineer"],
+["el1","Senior AI Engineer"],
+["el2","Lead AI Engineer"]
+]
+},
+
+{
+title:"AI Research",
+roles:[
+["el1","AI Research Scientist"],
+["el2","Senior AI Research Scientist"]
+]
+},
+
+{
+title:"Data Analysis",
+roles:[
+["aps5","Data Analyst"],
+["aps6","Senior Data Analyst"],
+["el1","Lead Data Analyst"]
+]
+},
+
+{
+title:"Data Architecture",
+roles:[
+["el1","Data Architect"],
+["el2","Lead Data Architect"]
+]
+},
+
+{
+title:"Data Engineering",
+roles:[
+["aps5","Data Engineer"],
+["aps6","Senior Data Engineer"],
+["el1","Lead Data Engineer"]
+]
+},
+
+{
+title:"Data Management",
+roles:[
+["aps5","Data Manager"],
+["aps6","Senior Data Manager"],
+["el1","Lead Data Manager"]
+]
+},
+
+{
+title:"Data Science",
+roles:[
+["aps5","Data Scientist"],
+["aps6","Senior Data Scientist"],
+["el1","Lead Data Scientist"]
+]
+},
+
+{
+title:"Geospatial Analysis",
+roles:[
+["aps5","Geospatial Analyst"],
+["aps6","Senior Geospatial Analyst"],
+["el1","Lead Geospatial Analyst"]
+]
+},
+
+{
+title:"AI Ops",
+roles:[
+["aps6","Machine Learning Operations Engineer"],
+["el1","Senior Machine Learning Ops Engineer"],
+["el2","Lead Machine Learning Ops Engineer"],
+["el2","AI Governance and Policy Officer"]
+]
+},
+
+{
+title:"Software Engineering",
+roles:[
+["aps4","Associate Software Engineer"],
+["aps6","Software Engineer"],
+["el1","Senior Software Engineer"],
+["el2","Principal Software Engineer"]
+]
+},
+
+{
+title:"Service Desk",
+roles:[
+["aps3","Service Desk Assistant"],
+["aps4","Associate Service Desk Analyst"],
+["aps5","Service Desk Analyst"],
+["aps6","Senior Service Desk Analyst"],
+["el1","Service Desk Manager"],
+["el2","Senior Service Desk Manager"]
+]
+},
+
+{
+title:"Cyber Security",
+roles:[
+["aps4","Cyber Advisor"],
+["aps5","Cyber Advisor"],
+["aps6","Senior Cyber Advisor"],
+["el1","Lead Cyber Advisor"],
+["el2","Principal Cyber Advisor"],
+
+["aps4","Cyber Threat Analyst"],
+["aps5","Cyber Threat Analyst"],
+["aps6","Senior Cyber Threat Analyst"],
+["el1","Lead Cyber Threat Analyst"],
+["el2","Principal Cyber Threat Analyst"]
+]
+},
+
+{
+title:"Project Management",
+roles:[
+["el1","Project Manager"],
+["el2","Senior Project Manager"],
+["el2","Program Manager"],
+["el2","Portfolio Manager"]
+]
+},
+
+{
+title:"Architecture",
+roles:[
+["el1","Solution Architect"],
+["el2","Senior Solution Architect"],
+["ses1","Principal Solution Architect"],
+["el2","Enterprise Architect"],
+["ses1","Chief Architect"]
+]
+},
+
+{
+title:"DevOps",
+roles:[
+["aps5","Junior DevOps Engineer"],
+["aps6","DevOps Engineer"],
+["el1","Senior DevOps Engineer"]
+]
+},
+
+{
+title:"Testing",
+roles:[
+["aps4","Test Analyst"],
+["aps5","Test Analyst"],
+["aps6","Senior Test Analyst"],
+["el1","Test Manager"],
+["el2","Lead Automation Tester"]
+]
+}
+
+];
+
+
+/* ================== DETAILS ================== */
+
+function getDetails(role){
+return {
+desc: role + " works on delivering solutions, collaborating with teams, and ensuring high-quality outcomes aligned with organisational goals.",
+skills:[
+"Communication",
+"Problem solving",
+"Technical expertise",
+"System design",
+"Stakeholder management",
+"Data handling",
+"Innovation",
+"Domain knowledge"
+]
+}
+}
+
+
+/* ================== RENDER ================== */
+
+const app=document.getElementById("app");
+
+sections.forEach(sec=>{
+
+let sectionDiv=document.createElement("div");
+sectionDiv.className="section";
+
+let title=document.createElement("h2");
+title.textContent="Typical APS - "+sec.title;
+
+let row=document.createElement("div");
+row.className="row";
+
+sec.roles.forEach(r=>{
+
+let level=r[0];
+let name=r[1];
+
+let card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<span class="badge ${level}">${level.toUpperCase()}</span>
+<span>${name}</span>
+
+<div class="popup">
+<div class="badge ${level}">${level.toUpperCase()}</div>
+<h3>${name}</h3>
+<p>${getDetails(name).desc}</p>
+
+<b>Missing skills</b>
+<ul>
+${getDetails(name).skills.map(s=>`<li>${s}</li>`).join("")}
+</ul>
+</div>
+`;
+
+row.appendChild(card);
+
+});
+
+sectionDiv.appendChild(title);
+sectionDiv.appendChild(row);
+app.appendChild(sectionDiv);
+
+});
+
+</script>
+
+</body>
+</html>

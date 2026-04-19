@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+  <link href="css/hii.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="js/bootstrap.bundle.js"></script>
+
+<script>
+  window.addEventListener("scroll", function() {
+    const navbar = document.querySelector(".premium-navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 20);
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body {
+      background: #f4f7fb;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .left, .right {
+      padding: 30px;
+    }
+    .left {
+      background:  #0F1B35;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .left h1 {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+    .left p {
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+    .right h2 {
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    select, input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      background: #0F1B35;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .result {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+    }
+    .career-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 12px;
+    }
+    .career-card h4 {
+      color: #1e40af;
+      margin-bottom: 8px;
+    }
+    .error {
+      color: #b91c1c;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+/* NAVBAR SAME AS HOME PAGE */
+.premium-navbar {
+  background: #0d1b3d;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+
+.premium-navbar.scrolled {
+  background: #08122a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.premium-navbar .nav-link {
+  color: white !important;
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+.premium-navbar .nav-link:hover {
+  
+}
+.login-btn {
+  background: white;
+  color: #0d1b3d;
+  padding: 6px 12px;
+  border-radius: 20px;
+text-decoration: none;
+}
+  </style>
+</head>
+<body>
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!--NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar fixed-top">
+  <div class="container-fluid">
+    
+    <a class="navbar-brand logo" href="http://127.0.0.1:5000/" style="color:white; font-size:30px;">
+     Career Pathfinder
+    </a>
+
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+
+<div class="ms-auto">
+      <a class="nav-link d-inline" href="http://127.0.0.1:5000/">Home</a>
+      <a class="nav-link d-inline" href="http://127.0.0.1:5000/about">About</a>
+      <a class="nav-link d-inline" href="/explore_roles">Explore Roles</a>
+      <a class="nav-link d-inline" href="http://127.0.0.1:5000/career_plan">My career plan</a>
+      <a class="nav-link d-inline" href="http://127.0.0.1:5000/skill">My Skills</a>
+       <a href="http://127.0.0.1:5000/login" class="login-btn" style="color: black;">Log In</a>
+
+   
+    </div>
+       
+
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+ <div class="container" style="padding-top:100px;">
+    <div class="left">
+      <div class="scroll-text">
+      <h1>Career Pathfinder
+</h1>
+      <p>
+        Unlock your potential with intelligent, data-driven career insights. Our advanced AI analyzes your interests, personality, and skill profile to identify career paths that truly align with your strengths.
+
+Gain personalized recommendations, evaluate your career readiness, and uncover key skill gaps with precision. Designed to guide your growth, the platform provides a clear, structured pathway to help you move from where you are to where you want to be.
+
+Make informed decisions, build the right skills, and take the next step in your career with confidence.
+      </p>
+    </div>
+</div>
+    <div class="right">
+      <h2>Check Your Best Career</h2>
+
+      <form id="careerForm">
+        <div class="form-group">
+          <label for="interest">Interest</label>
+          <select id="interest" required>
+            <option value="">Select Interest</option>
+            <option value="Programming">Accounting</option>
+            <option value="Programming">Acting</option>
+            <option value="Designing">Advertising</option>
+            <option value="Biology">Aerospace Engineering</option>
+            <option value="Business">Agriculture</option>
+            <option value="Finance">Animation</option>
+            <option value="Teaching">App Development</option>
+            <option value="AI">Architecture</option>
+            <option value="Data">Artificial Intelligence</option>
+            <option value="Design">Astrophysics</option>
+             <option value="Design">AI Ethics</option>
+            <option value="Marketing">Banking</option>
+            <option value="Sales">Banking</option>
+            <option value="">Blogging</option>
+               <option value="">Blockchain</option>
+               <option value="">Business Intelligence</option>
+             <option value="">Big Data</option>
+            <option value="Programming">Business Analysis</option>
+            <option value="Designing">Business Management</option>
+            <option value="Biology">Chemical Engineering</option>
+            <option value="Business">Civil Engineering</option>
+            <option value="Finance">Cloud Computing</option>
+            <option value="Teaching">Content Creation</option>
+            <option value="AI">Content Writing</option>
+            <option value="Data">Cyber Security</option>
+            <option value="Design">Data Analysis</option>
+            <option value="Marketing">Data Science</option>
+            <option value="Sales">Database Management</option>
+            <option value="Designing">Digital Marketing</option>
+            <option value="Biology">E-commerce</option>
+            <option value="Business">Economics</option>
+            <option value="Finance">Education</option>
+            <option value="Teaching"></option>
+            <option value="AI">Electrical Engineering</option>
+            <option value="Data">Electronics</option>
+            <option value="Design">Entrepreneurship</option>
+            <option value="Marketing">Environmental Science</option>
+            <option value="Sales">Event Management</option>
+            <option value="AI">Fashion Design</option>
+            <option value="Data">Film Making</option>
+            <option value="Design">Finance</option>
+            <option value="Marketing">Fine Arts</option>
+            <option value="Sales"></option>Food Technology</option>
+            <option value="Designing">Game Development</option>
+            <option value="Biology">Graphic Design</option>
+            <option value="Business">Hardware Engineering</option>
+            <option value="Finance">Healthcare</option>
+            <option value="Teaching">Hospitality Management</option>
+            <option value="AI">Human Resource Management</option>
+            <option value="Data">Industrial Engineering</option>
+            <option value="Design">Information Technology</option>
+            <option value="Marketing">Interior Design</option>
+            <option value="Sales">International Business</option>
+            <option value="AI">Journalism</option>
+            <option value="Data">Law</option>
+            <option value="Design">Logistics & Supply Chain</option>
+            <option value="Marketing">Machine Learning</option>
+            <option value="Sales">Marketing</option>
+            <option value="Designing">Mass Communication</option>
+            <option value="Biology">Mechanical Engineering</option>
+            <option value="Business">Media Production</option>
+            <option value="Finance">Medicine</option>
+            <option value="Teaching">Mobile App Development</option>
+            <option value="AI">Nanotechnology</option>
+            <option value="Data">Network Engineering</option>
+            <option value="Design">Operations Management</option>
+            <option value="Marketing">Pharmacy</option>
+            <option value="Sales">Photography</option>
+            <option value="Data">Physics</option>
+            <option value="Design">Political Science</option>
+            <option value="Marketing">Psychology</option>
+            <option value="Sales">Public Relations</option>
+            <option value="Designing">Quality Assurance</option>
+            <option value="Biology">Real Estate</option>
+            <option value="Business">Renewable Energy</option>
+            <option value="Finance">Robotics</option>
+            <option value="Teaching">Sales</option>
+            <option value="AI">Social Media Managemen</option>
+            <option value="Data">Sociology</option>
+            <option value="Design">Software Development</option>
+            <option value="Marketing">Supply Chain Analytics</option>
+            <option value="Marketing">Sports Management</option>
+            <option value="Sales">Telecommunications</option>
+            <option value="Data">Textile Design</option>
+            <option value="Design">Tourism & Travel Management</option>
+            <option value="Marketing">UI/UX Design</option>
+            <option value="Sales">Video Editing</option></option>
+            <option value="Designing">Virtual Reality</option>
+             <option value="Data">Quantum Computing</option>
+            <option value="Biology">Web Development</option>
+            <option value="Business">Zoology</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="personality">Personality</label>
+          <select id="personality" required>
+           <option value="">Adaptable</option>
+<option value="Ambitious">Ambitious</option>
+<option value="Analytical">Analytical</option>
+<option value="Assertive">Assertive</option>
+<option value="Balanced">Balanced</option>
+<option value="Bold">Bold</option>
+<option value="Brave">Brave</option>
+<option value="Broad-minded">Broad-minded</option>
+<option value="Calm">Calm</option>
+<option value="Caring">Caring</option>
+<option value="Confident">Confident</option>
+<option value="Creative">Creative</option>
+<option value="Curious">Curious</option>
+<option value="Decisive">Decisive</option>
+<option value="Dedicated">Dedicated</option>
+<option value="Detail-Oriented">Detail-Oriented</option>
+<option value="Disciplined">Disciplined</option>
+<option value="Driven">Driven</option>
+<option value="Easygoing">Easygoing</option>
+<option value="Efficient">Efficient</option>
+<option value="Empathetic">Empathetic</option>
+<option value="Energetic">Energetic</option>
+<option value="Enthusiastic">Enthusiastic</option>
+<option value="Fair-minded">Fair-minded</option>
+<option value="Flexible">Flexible</option>
+<option value="Focused">Focused</option>
+<option value="Friendly">Friendly</option>
+<option value="Generous">Generous</option>
+<option value="Goal-Oriented">Goal-Oriented</option>
+<option value="Hardworking">Hardworking</option>
+<option value="Helpful">Helpful</option>
+<option value="Honest">Honest</option>
+<option value="Humble">Humble</option>
+<option value="Imaginative">Imaginative</option>
+<option value="Independent">Independent</option>
+<option value="Innovative">Innovative</option>
+<option value="Intelligent">Intelligent</option>
+<option value="Intuitive">Intuitive</option>
+<option value="Judicious">Judicious</option>
+<option value="Kind">Kind</option>
+<option value="Knowledge-seeking">Knowledge-seeking</option>
+<option value="Leader-like">Leader-like</option>
+<option value="Logical">Logical</option>
+<option value="Loyal">Loyal</option>
+<option value="Mature">Mature</option>
+<option value="Methodical">Methodical</option>
+<option value="Motivated">Motivated</option>
+<option value="Noble">Noble</option>
+<option value="Open-minded">Open-minded</option>
+<option value="Optimistic">Optimistic</option>
+<option value="Organized">Organized</option>
+<option value="Patient">Patient</option>
+<option value="Persistent">Persistent</option>
+<option value="Persuasive">Persuasive</option>
+<option value="Practical">Practical</option>
+<option value="Proactive">Proactive</option>
+<option value="Problem-Solver">Problem-Solver</option>
+<option value="Professional">Professional</option>
+<option value="Quick-thinking">Quick-thinking</option>
+<option value="Rational">Rational</option>
+<option value="Reliable">Reliable</option>
+<option value="Resilient">Resilient</option>
+<option value="Resourceful">Resourceful</option>
+<option value="Responsible">Responsible</option>
+<option value="Self-disciplined">Self-disciplined</option>
+<option value="Self-motivated">Self-motivated</option>
+<option value="Sociable">Sociable</option>
+<option value="Strategic">Strategic</option>
+<option value="Supportive">Supportive</option>
+<option value="Team-oriented">Team-oriented</option>
+<option value="Thoughtful">Thoughtful</option>
+<option value="Trustworthy">Trustworthy</option>
+<option value="Understanding">Understanding</option>
+<option value="Versatile">Versatile</option>
+<option value="Visionary">Visionary</option>
+<option value="Willing-to-learn">Willing-to-learn</option>
+<option value="Xenial">Xenial</option>
+<option value="Youthful">Youthful</option>
+<option value="Zealous">Zealous</option>
+          </select>
+        </div>
+
+        <div class="skills-grid">
+          <div class="form-group">
+            <label for="math">Statistics Skill (1-10)</label>
+            <input type="number" id="math" min="1" max="10" required />
+          </div>
+          <div class="form-group">
+            <label for="communication">Communication Skill (1-10)</label>
+            <input type="number" id="communication" min="1" max="10" required />
+          </div>
+          <div class="form-group">
+            <label for="creativity">Creativity (1-10)</label>
+            <input type="number" id="creativity" min="1" max="10" required />
+          </div>
+          <div class="form-group">
+            <label for="logic">Logical Thinking (1-10)</label>
+            <input type="number" id="logic" min="1" max="10" required />
+          </div>
+        </div>
+
+        <button type="submit">Get Career Recommendations</button>
+      </form>
+
+      <div id="result" class="result" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("careerForm");
+    const resultDiv = document.getElementById("result");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const payload = {
+        Interest: document.getElementById("interest").value,
+        Personality: document.getElementById("personality").value,
+        Math_Skill: Number(document.getElementById("math").value),
+        Communication_Skill: Number(document.getElementById("communication").value),
+        Creativity: Number(document.getElementById("creativity").value),
+        Logical_Thinking: Number(document.getElementById("logic").value)
+      };
+
+      try {
+        const response = await fetch("http://127.0.0.1:5000/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        resultDiv.style.display = "block";
+
+        if (data.Status === "Rejected") {
+          resultDiv.innerHTML = `
+            <p class="error">Prediction Rejected</p>
+            <p><strong>Reason:</strong> ${data.Reason}</p>
+            <p><strong>Average Skill Score:</strong> ${data["Average Skill Score"]}</p>
+          `;
+        } else {
+          let html = `<h3>Top Career Predictions</h3>`;
+          data.Predictions.forEach(item => {
+            html += `
+              <div class="career-card">
+                <h4>${item.Career}</h4>
+                <p><strong>Prediction Probability:</strong> ${item["Prediction Probability (%)"]}%</p>
+                <p><strong>Suitability Score:</strong> ${item["Suitability Score (%)"]}%</p>
+                <p><strong>Skill Gaps:</strong> ${
+                  Array.isArray(item["Skill Gaps"])
+                    ? item["Skill Gaps"].join(", ")
+                    : item["Skill Gaps"]
+                }</p>
+              </div>
+            `;
+          });
+          resultDiv.innerHTML = html;
+        }
+      } catch (error) {
+        resultDiv.style.display = "block";
+        resultDiv.innerHTML = `<p class="error">Unable to connect to backend.</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

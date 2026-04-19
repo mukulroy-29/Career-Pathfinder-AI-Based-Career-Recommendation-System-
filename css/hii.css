@@ -1,0 +1,338 @@
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  min-width: 280px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 0;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+/* Show dropdown */
+.dropdown-content.show {
+  display: block;
+}
+
+/* Welcome Section */
+.welcome-section {
+  padding: 18px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.welcome-section h4 {
+  margin: 0 0 5px 0;
+  font-size: 17px;
+  font-weight: bold;
+  color: #333;
+}
+
+.welcome-section p {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Login Button */
+.login-btn {
+  background-color: #b72c2c;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #8f2020;
+}
+
+/* Menu Links */
+.menu-links {
+  padding: 8px 0;
+}
+
+.menu-links a {
+  display: block;
+  color: #333;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.menu-links a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Language Section */
+.language-section {
+  padding: 15px 18px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.lang-btn {
+  background-color: #e7e7e7;
+  color: #333;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  background-color: #d0d0d0;
+}
+
+/* Optional: Add arrow pointer */
+.dropdown-content::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+  filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.1));
+}
+
+/* PREMIUM NAVBAR BACKGROUND */
+.premium-navbar {
+  background: linear-gradient(270deg, #2563eb, #1e40af, #3b82f6);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+/* Animated gradient */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* LOGO STYLE */
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+/* Glow effect */
+.logo:hover {
+  text-shadow: 0 0 10px #fff, 0 0 20px #93c5fd;
+}
+
+/* NAV LINKS */
+.nav-link {
+  color: white !important;
+  margin: 0 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hover underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: white;
+  transition: 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hover zoom */
+.nav-link:hover {
+  transform: scale(1.1);
+  color: #c7d2fe !important;
+}
+
+/* Scroll shadow */
+.premium-navbar.scrolled {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* BODY SPACE (IMPORTANT) */
+body {
+  padding-top: 80px;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* BACKGROUND */
+body {
+  background: linear-gradient(135deg, #dbeafe, #eef2ff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* GLASS CONTAINER */
+.container {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
+
+  overflow: hidden;
+  animation: fadeIn 1s ease;
+}
+
+/* LEFT PANEL */
+.left {
+  background: linear-gradient(135deg, rgba(37,99,235,0.8), rgba(30,64,175,0.8));
+  color: white;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.left h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.left p {
+  opacity: 0.9;
+}
+
+/* RIGHT PANEL */
+.right {
+  padding: 30px;
+}
+
+/* INPUTS */
+input, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(5px);
+
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  box-shadow: 0 0 10px rgba(37,99,235,0.5);
+}
+
+/* GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(37,99,235,0.4);
+}
+
+/* RESULT BOX */
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* CAREER CARD */
+.career-card {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+
+  transition: 0.3s;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.career-card h4 {
+  color: #1e3a8a;
+}
+
+/* ERROR */
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

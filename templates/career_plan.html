@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Skills</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/*  GLOBAL NAVBAR (SAME AS OTHER PAGES) */
+.navbar-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: #0d1b3d;
+  color: white;
+}
+
+/* LINKS */
+.nav-links a {
+  margin: 0 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #90caf9;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+  background: #0d1b3d;
+  color: #0d1b3d;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* FIX CONTENT OVERLAP */
+body {
+  padding-top: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+}
+
+/* Container */
+.container {
+    width: 95%;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtext {
+    color: #3b5bdb;
+    font-size: 14px;
+}
+
+/* Buttons */
+.top-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-blue { background: #2563eb; color: #fff; }
+.btn-outline { background: #eef2ff; color: #2563eb; }
+.btn-light { background: #f1f5f9; }
+
+/* Toolbar */
+.toolbar-wrapper {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.toolbar {
+    display: inline-flex;
+    gap: 40px;
+    white-space: nowrap;
+    padding: 10px 0;
+    animation: scrollLoop 12s linear infinite;
+    animation-play-state: paused;
+}
+
+.toolbar-wrapper:hover .toolbar {
+    animation-play-state: running;
+}
+
+@keyframes scrollLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.toolbar span {
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Table */
+.table-header, .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.table-header {
+    font-weight: 600;
+}
+
+.row:hover {
+    background: #f9fafc;
+}
+
+.empty {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+}
+
+/* 🔥 NEW SEARCH BAR */
+.search-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+    position:relative;
+}
+
+.search-wrapper input{
+    width:350px;
+    padding:12px;
+    border-radius:25px;
+    border:1px solid #ccc;
+}
+
+/* suggestions */
+.suggestions{
+    position:absolute;
+    top:50px;
+    width:350px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    max-height:250px;
+    overflow-y:auto;
+    display:none;
+}
+
+.suggestion{
+    padding:10px;
+    cursor:pointer;
+}
+.suggestion:hover{
+    background:#eef2ff;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background: white;
+    width: 350px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Help */
+.help-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0f172a;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="navbar-custom">
+  <h3>Career Pathfinder</h3>
+
+  <div class="nav-links">
+    <a href="http://127.0.0.1:5000/">Home</a>
+    <a href="http://127.0.0.1:5000/about">About</a>
+    <a href="http://127.0.0.1:5000/explore_roles">Explore roles</a>
+    <a href="http://127.0.0.1:5000/career_plan">My career plan</a>
+    <a href="http://127.0.0.1:5000/skill">My skills</a>
+    <a href="http://127.0.0.1:5000/login" class="login-btn">Log In</a>
+  </div>
+</div>
+<div class="container">
+
+<div class="header">
+<div>
+<h2>My skills</h2>
+<div class="subtext">
+• Create an account or login to enjoy the full experience.
+</div>
+</div>
+
+<div class="top-buttons">
+<button class="btn btn-outline">Import skills</button>
+<button class="btn btn-light">Export skills</button>
+<button class="btn btn-blue" onclick="openModal()">Add skills</button>
+</div>
+</div>
+
+ <!-- LOOP TOOLBAR -->
+    <div class="toolbar-wrapper">
+        <div class="toolbar">
+            <span><i class="fa fa-trash"></i> Delete</span>
+            <span><i class="fa fa-ban"></i> Ignored</span>
+            <span><i class="fa fa-check"></i> Acknowledge</span>
+            <span><i class="fa fa-times"></i> Cancel</span>
+            <span><i class="fa fa-copy"></i> Copy</span>
+            <span><i class="fa fa-expand"></i> Expand</span>
+            <span><i class="fa fa-compress"></i> Collapse</span>
+            <span><i class="fa fa-cog"></i> Actions</span>
+
+            <!-- duplicate for smooth loop -->
+            <span><i class="fa fa-trash"></i> Delete</span>
+            <span><i class="fa fa-ban"></i> Ignored</span>
+            <span><i class="fa fa-check"></i> Acknowledge</span>
+            <span><i class="fa fa-times"></i> Cancel</span>
+            <span><i class="fa fa-copy"></i> Copy</span>
+            <span><i class="fa fa-expand"></i> Expand</span>
+            <span><i class="fa fa-compress"></i> Collapse</span>
+            <span><i class="fa fa-cog"></i> Actions</span>
+        </div>
+    </div>
+
+
+<div class="table">
+<div class="table-header">
+<div>Skills and Knowledge</div>
+<div>Level</div>
+</div>
+
+<div id="skillList"></div>
+
+<div class="empty" id="emptyMsg">
+No skills added yet. Click "Add skills" to get started.
+</div>
+
+<!-- 🔥 SEARCH BAR BELOW -->
+<div class="search-wrapper">
+<input type="text" placeholder="Search AI roles / skills..." onkeyup="searchData(this.value)">
+<div class="suggestions" id="suggestions"></div>
+</div>
+
+</div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3>Add Skill</h3>
+<input type="text" id="skillInput">
+<select id="levelInput">
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
+</select>
+<button onclick="addSkill()">Add</button>
+</div>
+</div>
+
+
+<script>
+
+/* 🔥 DATASET (100+ AI related) */
+let data=[
+" Python" , "Programming","Java Programming","C Programming","C++ Progr amming",
+
+"JavaScript Development","Web Development","Full Stack Development",
+
+"Frontend Development","Backend Development","Data Structures",
+
+"Algorithms","Operating Systems","Database Management",
+
+"Software Engineering","Mobile App Development",
+
+"Android Development","iOS Development",
+
+"Cloud Computing","AWS Certification","Azure Fundamentals",
+
+"Google Cloud Platform","DevOps Engineering",
+
+"Docker & Kubernetes","Cyber Security","Ethical Hacking",
+
+"Penetration Testing","Networking Basics","Linux Administration",
+
+"Machine Learning","Deep Learning","Artificial Intelligence",
+
+"Natural Language Processing","Computer Vision",
+
+"Data Science","Data Analysis","Big Data","Hadoop","Spark",
+
+"TensorFlow","PyTorch",
+
+/* ===== BUSINESS ===== */
+
+"Business Management","Project Management","Product Management",
+
+"Business Analysis","Entrepreneurship","Marketing Management",
+
+"Digital Marketing","Sales Management","Operations Management",
+
+"Supply Chain Management","Human Resource Management",
+
+/* ===== FINANCE ===== */
+
+"Financial Accounting","Corporate Finance","Investment Banking",
+
+"Stock Market","Financial Modeling","Risk Management",
+
+"Taxation","Auditing","FinTech",
+
+/* ===== DESIGN ===== */
+
+"Graphic Design","UI Design","UX Design","Figma Design",
+
+"Adobe Photoshop","Illustrator","Video Editing",
+
+"Animation","Motion Graphics","3D Design",
+
+/* ===== HEALTH ===== */
+
+"Healthcare Management","Medical Coding","Nursing Basics",
+
+"Pharmacy","Public Health","Nutrition","Mental Health",
+
+/* ===== ENGINEERING ===== */
+
+"Mechanical Engineering","Electrical Engineering",
+
+"Civil Engineering","Electronics Engineering",
+
+"Robotics Engineering","Automobile Engineering",
+
+/* ===== SCIENCE ===== */
+
+"Physics","Chemistry","Biology","Mathematics",
+
+"Statistics","Environmental Science",
+
+/* ===== EDUCATION ===== */
+
+"Teaching Methods","Educational Psychology",
+
+"Curriculum Development","E-learning",
+
+/* ===== LANGUAGE ===== */
+
+"English Communication","Spoken English","IELTS Preparation",
+
+"French Language","German Language","Spanish Language",
+
+/* ===== SOFT SKILLS ===== */
+
+"Communication Skills","Leadership Skills","Problem Solving",
+
+"Time Management","Critical Thinking","Public Speaking"
+];
+
+for(let i=0;i<5;i++){
+data=[...data,...data];
+}
+
+/* SEARCH */
+function searchData(val){
+let box=document.getElementById("suggestions");
+
+if(val===""){ box.style.display="none"; return;}
+
+let filtered=data.filter(d=>d.toLowerCase().includes(val.toLowerCase()));
+
+let html="";
+filtered.slice(0,100).forEach(item=>{
+html+=`<div class="suggestion" onclick="quickAdd('${item}')">${item}</div>`;
+});
+
+box.innerHTML=html;
+box.style.display="block";
+}
+
+/* ADD DIRECT */
+function quickAdd(skill){
+let row=document.createElement("div");
+row.className="row";
+row.innerHTML=`<div>${skill}</div><div>Intermediate</div>`;
+document.getElementById("skillList").appendChild(row);
+
+document.getElementById("emptyMsg").style.display="none";
+document.getElementById("suggestions").style.display="none";
+}
+
+/* MODAL */
+function openModal(){
+document.getElementById("modal").style.display="block";
+}
+
+function addSkill(){
+let skill=document.getElementById("skillInput").value;
+let level=document.getElementById("levelInput").value;
+
+if(skill==="") return;
+
+let row=document.createElement("div");
+row.className="row";
+row.innerHTML=`<div>${skill}</div><div>${level}</div>`;
+
+document.getElementById("skillList").appendChild(row);
+document.getElementById("emptyMsg").style.display="none";
+document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

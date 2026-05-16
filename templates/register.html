@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Page</title>
+
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* SAME CSS (UNCHANGED) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #e6ebf1;
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.premium-navbar {
+  background: #0d1b3d;
+  padding: 10px 20px;
+}
+
+.premium-navbar .nav-link {
+  color: white !important;
+  margin-left: 15px;
+}
+
+.premium-navbar button {
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.login-wrapper {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.outer {
+  width: 100%;
+  height: 750px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(120,160,200,0.6), rgba(80,120,170,0.6));
+  padding: 30px;
+  position: relative;
+}
+
+.card {
+  background: rgba(35, 65, 95, 0.9);
+  border-radius: 20px;
+  padding: 50px;
+  height: 100%;
+  color: white;
+}
+
+.desc {
+  margin-top: 10px;
+  color: #d8e0ea;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  margin-top: 12px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: none;
+  background: #3c4a5e;
+  color: white;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #0b3c6f;
+  color: white;
+}
+
+.footer {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.footer a {
+  color: #4da6ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .login-wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-wrapper {
+    width: 95%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar fixed-top">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand text-white" href="http://127.0.0.1:5000/">
+     Career Pathfinder
+    </a>
+
+    <!-- Toggle button (mobile) -->
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+
+        <li class="nav-item">
+          <button class="nav-link" onclick="location.href='http://127.0.0.1:5000/'">
+            Home
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link" onclick="location.href=' http://127.0.0.1:5000/about'">
+            About
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button class="btn btn-light ms-3" onclick="location.href='http://127.0.0.1:5000/login'">
+            Login
+          </button>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<!-- REGISTER -->
+<div class="login-wrapper">
+  <div class="outer">
+
+    <div class="card">
+
+      <h5>Register</h5>
+
+      <div class="desc">
+        Create your account to start your career journey.
+      </div>
+
+      <form method="POST" action="/register">
+
+        <label>Email *</label>
+	<input type="email" name="email" placeholder="Enter email" required>
+       
+	<label>First Name *</label>
+        <input type="text" name="first_name" placeholder="Enter first name" required>
+
+        <label>Last Name</label>
+       <input type="text" name="last_name" placeholder="Enter last name">
+
+        <label>Password *</label>
+        <input type="password" name="password" placeholder="Enter password" required>
+
+        <label>Repeat Password *</label>
+       <input type="password" name="repeat_password" placeholder="Repeat password" required>
+        <button>Sign Up</button>
+      </form>
+
+      <div class="footer">
+        <p>
+          Already have an account? 
+          <a href="http://127.0.0.1:5000/login">Login</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

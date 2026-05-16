@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+
+<style>
+
+/* ================= FIRST PAGE ================= */
+.first-page {
+  background: #0d1b3d;
+  color: white;
+  position: relative;
+
+  padding-top: 80px; /*  fix overlap */
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+  flex-wrap: wrap;
+}
+
+.left img {
+  width: 100%;
+  max-width: 350px;
+}
+
+.right {
+  width: 45%;
+  min-width: 300px;
+ 
+}
+
+/* CARDS */
+.card-container {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  
+}
+
+.card-box {
+  position: relative;
+  width: 240px;
+  padding: 20px;
+  border-radius: 18px;
+
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  color: white;
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+}
+
+/* LIGHT REFLECTION (liquid shine) */
+.card-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+
+  transform: rotate(25deg);
+  transition: 0.6s;
+}
+/* HOVER EFFECT */
+.card-box:hover::before {
+  left: 100%;
+}
+.card-box:hover {
+  transform: translateY(-10px) scale(1.03);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.3),
+    0 0 20px rgba(255,255,255,0.1);
+}/* TEXT */
+.card-box h4 {
+  margin-bottom: 8px;
+}
+
+.card-box p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* BUTTON */
+.card-box button {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 16px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-box button:hover {
+  background: white;
+  color: #0d1b3d;
+}
+
+
+.card-box button {
+  background: #1a73e8;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 20px;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  background: black;
+  color: white;
+  transition: 0.3s;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* FILTER BAR */
+.filter-bar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+padding:15px 20px;
+background:white;
+border-radius:12px;
+margin:30px;
+}
+
+/* LEFT BUTTONS */
+.left-filters{
+display:flex;
+gap:10px;
+}
+
+.filter-btn{
+padding:6px 14px;
+border-radius:8px;
+border:1px solid rgba(255,255,255,0.2);
+background:transparent;
+color:black;
+cursor:pointer;
+transition:0.3s;
+font-size:13px;
+}
+
+.filter-btn:hover{
+background:gray;
+}
+
+.filter-btn.active{
+background:white;
+border-color:;
+}
+
+.filter-btn.active:hover{
+background:gray;
+}
+
+/* RIGHT BUTTON */
+.add-btn{
+background:#2979ff;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+transition:0.3s;
+}
+
+.add-btn:hover{
+background:#1c5fd4;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: white;
+  color: #0d1b3d;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:#f5f6f8;
+}
+
+header{
+background:#0b1f3f;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position: sticky;  
+  top: 0;             
+  z-index: 1000; 
+}
+
+.search{
+border:1px solid #3b5bd6;
+padding:8px 12px;
+border-radius:6px;
+background:#0b1f3f;
+color:white;
+}
+
+/* SECTION */
+.section{
+padding:25px;
+}
+
+.section h2{
+font-size:15px;
+color:#444;
+margin-bottom:12px;
+}
+
+/* ROW */
+.row{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+/* CARD */
+.card{
+background:white;
+padding:8px 12px;
+border-radius:10px;
+display:flex;
+gap:8px;
+align-items:center;
+cursor:pointer;
+position:relative;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* BADGE */
+.badge{
+font-size:11px;
+padding:4px 7px;
+border-radius:6px;
+color:white;
+font-weight:bold;
+}
+
+.aps3{background:#6c757d;}
+.aps4{background:#8e44ad;}
+.aps5{background:#a14ea0;}
+.aps6{background:#0077b6;}
+.el1{background:#6c63ff;}
+.el2{background:#2b9348;}
+.ses1{background:#ff6b35;}
+
+/* POPUP */
+.popup{
+position:absolute;
+top:42px;
+left:0;
+width:340px;
+background:white;
+padding:18px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+display:none;
+z-index:100;
+}
+
+.card:hover .popup{
+display:block;
+}
+
+.popup h3{
+margin:8px 0;
+}
+
+.popup ul{
+padding-left:18px;
+font-size:13px;
+line-height:1.5;
+}
+/* ===== AI ANIMATION ===== */
+.ai-container {
+  text-align: center;
+  transform: translateX(100px); /* move right */
+}
+
+/* OUTER SQUARE */
+.logo {
+  width: 200px;   /* was 150px */
+  height: 200px;  /* was 150px */
+  border: 4px solid #7fdcff;
+  transform: rotate(45deg);
+  position: relative;
+  margin: auto;
+  animation: rotate 6s linear infinite, glow 2s ease-in-out infinite;
+}
+
+/* INNER SQUARE */
+.logo::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border: 4px solid #00eaff;
+  top: 15%;
+  left: 15%;
+}
+
+/* TEXT STYLE FIX */
+.ai-container h2 {
+  margin-top: 30px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.ai-container p {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #00c3ff;
+  letter-spacing: 3px;
+}
+
+/* ANIMATION */
+@keyframes rotate {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(405deg); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px #00c3ff; }
+  50% { box-shadow: 0 0 40px #00eaff; }
+  100% { box-shadow: 0 0 10px #00c3ff; }
+}
+</style>
+</head>
+
+<body>
+  
+
+<header>
+<div><b>CAREER PATHFINDER</b></div>
+ <div class="nav-links">
+	<a class="nav-link d-inline" href="http://127.0.0.1:5000/">Home</a>
+    <a href="http://127.0.0.1:5000/about">About</a>
+    <a href="http://127.0.0.1:5000/explore_roles">Explore roles</a>
+    <a href="http://127.0.0.1:5000/career_plan">My career plan</a>
+    <a href="http://127.0.0.1:5000/skill">My skills</a>
+ <a href="http://127.0.0.1:5000/login" class="login-btn" style="color: black;">Log In</a>
+  </div>
+
+</header>
+
+
+<!-- ================= FIRST PAGE ================= -->
+<div class="section first-page">
+
+  <div class="hero">
+    <div class="left">
+  <div class="ai-container">
+    <div class="logo"></div>
+    <h2>AI CAREER PATH</h2>
+    <p>RECOMMENDATION SYSTEM</p>
+  </div>
+</div>
+
+    <div class="right">
+      <h1>Plan your next career step</h1>
+      <p>Explore potential roles based on your skills</p>
+
+      <div class="card-container">
+        <div class="card-box">
+          <h4>Tell us about you</h4>
+          <p>Add skills to see pathways</p>
+	  <button onclick="location.href='http://127.0.0.1:5000/skill'">Start</button>
+        </div>
+
+        <div class="card-box">
+          <h4>Explore roles</h4>
+          <p>Browse all roles</p>
+         <button onclick="location.href='http://127.0.0.1:5000/explore_roles'">Explore</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLL BUTTON -->
+  <div id="scrollBtn" class="scroll-btn" onclick="goToSecond()">
+
+    ⬇ View Pathways
+  </div>
+
+</div>
+<div id="second" class="section second-page">
+
+
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+
+  <div class="left-filters">
+    <button class="filter-btn active">Skills</button>
+    <button class="filter-btn">Interests</button>
+    <button class="filter-btn">Filters ▼</button>
+  </div>
+
+  
+  <div class="right-action">
+    <button class="add-btn">Add your skills</button>
+  </div>
+
+</div>
+<div id="app"></div>
+
+<script>
+
+const data = [
+
+/* ================= DATA PROFESSION ================= */
+
+{title:"Applied AI",roles:[
+{levels:["aps6"],name:"AI Engineer"},
+{levels:["el1"],name:"Senior AI Engineer"},
+{levels:["el2"],name:"Lead AI Engineer"}
+]},
+
+{title:"AI Research",roles:[
+{levels:["el1"],name:"AI Research Scientist"},
+{levels:["el2"],name:"Senior AI Research Scientist"}
+]},
+
+{title:"Data Analysis",roles:[
+{levels:["aps5"],name:"Data Analyst"},
+{levels:["aps6"],name:"Senior Data Analyst"},
+{levels:["el1"],name:"Lead Data Analyst"}
+]},
+
+{title:"Data Architecture",roles:[
+{levels:["el1"],name:"Data Architect"},
+{levels:["el2"],name:"Lead Data Architect"}
+]},
+
+{title:"Data Engineering",roles:[
+{levels:["aps5"],name:"Data Engineer"},
+{levels:["aps6"],name:"Senior Data Engineer"},
+{levels:["el1"],name:"Lead Data Engineer"}
+]},
+
+{title:"Data Management",roles:[
+{levels:["aps5"],name:"Data Manager"},
+{levels:["aps6"],name:"Senior Data Manager"},
+{levels:["el1"],name:"Lead Data Manager"}
+]},
+
+{title:"Data Science",roles:[
+{levels:["aps5"],name:"Data Scientist"},
+{levels:["aps6"],name:"Senior Data Scientist"},
+{levels:["el1"],name:"Lead Data Scientist"}
+]},
+
+{title:"Geospatial Analysis",roles:[
+{levels:["aps5"],name:"Geospatial Analyst"},
+{levels:["aps6"],name:"Senior Geospatial Analyst"},
+{levels:["el1"],name:"Lead Geospatial Analyst"}
+]},
+
+{title:"AI Ops",roles:[
+{levels:["aps6"],name:"Machine Learning Operations Engineer"},
+{levels:["el1"],name:"Senior Machine Learning Ops Engineer"},
+{levels:["el1","el2"],name:"AI Governance and Policy Officer"},
+{levels:["el2"],name:"Lead Machine Learning Ops Engineer"}
+]},
+
+{title:"Statistics",roles:[
+{levels:["aps5"],name:"Statistician"},
+{levels:["aps6"],name:"Senior Statistician"},
+{levels:["el1"],name:"Lead Statistician"}
+]},
+
+/* ================= DIGITAL ================= */
+
+{title:"Accessibility",roles:[
+{levels:["aps5","aps6"],name:"Accessibility Practitioner"},
+{levels:["el1"],name:"Lead Accessibility Advisor"}
+]},
+
+{title:"Agile Coaching",roles:[
+{levels:["aps6","el1"],name:"Scrum Master"},
+{levels:["el1","el2"],name:"Release Train Engineer"},
+{levels:["el2"],name:"Agile Coach"}
+]},
+
+{title:"Application Architecture",roles:[
+{levels:["el1"],name:"Application Architect"},
+{levels:["el2"],name:"Lead Application Architect"}
+]},
+
+{title:"Business Analysis",roles:[
+{levels:["aps4","aps5"],name:"Associate Business Analyst"},
+{levels:["aps6"],name:"Business Analyst"},
+{levels:["el1"],name:"Senior Business Analyst"},
+{levels:["el1"],name:"Lead Business Analyst"},
+{levels:["el2"],name:"Business Analysis Practice Lead"}
+]},
+
+{title:"Service Desk",roles:[
+{levels:["aps3"],name:"Service Desk Assistant"},
+{levels:["aps4"],name:"Associate Service Desk Analyst"},
+{levels:["aps5"],name:"Service Desk Analyst"},
+{levels:["aps6"],name:"Senior Service Desk Analyst"},
+{levels:["el1"],name:"Service Desk Manager"},
+{levels:["el2"],name:"Senior Service Desk Manager"}
+]},
+
+{title:"Software Engineering",roles:[
+{levels:["aps4","aps5"],name:"Associate Software Engineer (Developer)"},
+{levels:["aps6"],name:"Software Engineer (Developer)"},
+{levels:["el1"],name:"Senior Software Engineer (Developer)"},
+{levels:["el2"],name:"Principal Software Engineer (Developer)"}
+]},
+
+{title:"Systems Analysis",roles:[
+{levels:["aps5"],name:"Associate Systems Analyst"},
+{levels:["aps6"],name:"Systems Analyst"},
+{levels:["el1"],name:"Senior Systems Analyst"},
+{levels:["el2"],name:"Lead Systems Analyst"}
+]},
+
+{title:"Digital Testing",roles:[
+{levels:["aps4"],name:"Performance Tester"},
+{levels:["aps5","aps4"],name:"Junior Automation Tester"},
+{levels:["aps5"],name:"Performance Tester"},
+{levels:["aps6"],name:"Automation Tester"},
+{levels:["aps6"],name:"Data Migration Tester"},
+{levels:["aps6"],name:"Performance Tester"},
+{levels:["el1"],name:"Senior Automation Tester"},
+{levels:["el1"],name:"Senior Performance Tester"},
+{levels:["el2"],name:"Lead Automation Tester"}
+]},
+
+{title:"DevOps Engineering",roles:[
+{levels:["aps4","aps5"],name:"Junior DevOps Engineer"},
+{levels:["aps6","el1"],name:"DevOps Engineer"},
+{levels:["el1"],name:"Senior DevOps Engineer"}
+]},
+
+{title:"Cyber Security Advice",roles:[
+{levels:["aps4"],name:"Cyber Advisor"},
+{levels:["aps5"],name:"Cyber Advisor"},
+{levels:["aps6"],name:"Senior Cyber Advisor"},
+{levels:["el1"],name:"Lead Cyber Advisor"},
+{levels:["el2"],name:"Principal Cyber Advisor"}
+]},
+
+{title:"Threat Analysis",roles:[
+{levels:["aps4"],name:"Cyber Threat Analyst"},
+{levels:["aps5"],name:"Cyber Threat Analyst"},
+{levels:["aps6"],name:"Senior Cyber Threat Analyst"},
+{levels:["el1"],name:"Lead Cyber Threat Analyst"},
+{levels:["el2"],name:"Principal Cyber Threat Analyst"}
+]},
+
+{title:"Delivery Management",roles:[
+{levels:["el1"],name:"Delivery Manager"},
+{levels:["el2"],name:"Lead Delivery Manager"}
+]},
+
+{title:"Enterprise Architecture",roles:[
+{levels:["el2"],name:"Enterprise Architect"},
+{levels:["el2"],name:"Principal Enterprise Architect"},
+{levels:["ses1"],name:"Chief Architect"}
+]},
+
+{title:"Security Leadership",roles:[
+{levels:["ses1"],name:"Chief Information Security Officer"},
+{levels:["ses1"],name:"Security Operations Executive"}
+]}
+
+/* (HR + rest omitted earlier — but now FULL data you gave is covered till main sections) */
+
+];
+
+
+/* RENDER */
+
+const app=document.getElementById("app");
+
+data.forEach(sec=>{
+let s=document.createElement("div");
+s.className="section";
+
+let h=document.createElement("h2");
+h.textContent=sec.title;
+
+let t=document.createElement("div");
+t.className="timeline";
+
+let r=document.createElement("div");
+r.className="row";
+
+sec.roles.forEach(role=>{
+let c=document.createElement("div");
+c.className="card";
+
+role.levels.forEach(l=>{
+let b=document.createElement("span");
+b.className="badge "+l;
+b.textContent=l.toUpperCase();
+c.appendChild(b);
+});
+
+let txt=document.createElement("span");
+txt.textContent=role.name;
+c.appendChild(txt);
+
+/* popup */
+let p=document.createElement("div");
+p.className="popup";
+p.innerHTML=`<b>${role.name}</b><br>Role details`;
+c.appendChild(p);
+
+r.appendChild(c);
+});
+
+t.appendChild(r);
+s.appendChild(h);
+s.appendChild(t);
+app.appendChild(s);
+});
+
+</script>
+<script>
+function goToSecond() {
+  document.getElementById("second").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: 'https://mukul29.app.n8n.cloud/webhook/5da20e68-3304-4047-9ade-6e5ef096611e/chat'
+	});
+</script>
+</body>
+</html>

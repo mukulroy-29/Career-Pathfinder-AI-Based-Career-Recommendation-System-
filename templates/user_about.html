@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User About</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#020c1b,#0a192f,#112240);
+color:#ccd6f6;
+overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(2,12,27,0.8);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+header h1{
+color:#64ffda;
+font-size:18px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#ccd6f6;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#64ffda;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:100px 20px 60px;
+animation:fadeUp 1s ease;
+}
+
+.hero h2{
+font-size:42px;
+color:#ffffff;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:750px;
+margin:auto;
+color:#8892b0;
+line-height:1.7;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+padding:40px 20px;
+}
+
+.card{
+width:320px;
+padding:30px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+position:relative;
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+/* glowing border */
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+height:4px;
+width:100%;
+background:linear-gradient(90deg,#64ffda,#00bcd4);
+border-top-left-radius:20px;
+border-top-right-radius:20px;
+}
+
+/* hover effect */
+.card:hover{
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* text */
+.card h3{
+color:#ffffff;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:14px;
+color:#a8b2d1;
+line-height:1.6;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:12px 30px;
+background:linear-gradient(90deg,#64ffda,#00bcd4);
+color:#020c1b;
+border-radius:8px;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+background:#020c1b;
+color:#8892b0;
+margin-top:60px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* SCROLL REVEAL */
+.show{
+opacity:1 !important;
+transform:translateY(0) !important;
+transition:0.8s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>CAREER PATHFINDER</h1>
+<nav>
+<a class="nav-link d-inline" href="http://127.0.0.1:5000/user_font">Home</a>
+  
+    
+    <a href="http://127.0.0.1:5000/user_career_plan">My career plan</a>
+    <a href="http://127.0.0.1:5000/user_skill">My skills</a>
+<a href="http://127.0.0.1:5000/profile">Profile</a>
+  </div>
+
+</nav>
+</header>
+
+<section class="hero">
+<h2>AI Career Path & Recommendation System</h2>
+<p>
+An intelligent platform that analyzes your skills and suggests the best career path with real-time insights, role hierarchy, and skill gap analysis.
+Our AI-powered Career Path Recommendation System analyzes your skills, interests, and goals to guide you toward the most suitable career paths. 
+We bridge the gap between learning and industry by providing structured roadmaps, skill analysis, and intelligent career suggestions.
+</p>
+</section>
+
+<section class="cards">
+
+<div class="card">
+<h3>Personalized Career Assessment</h3>
+<p>
+Our system analyzes user interests, skills,and goals through an intelligent questionnarie. it maps responses to real-world career roles such as AI enfineer, data Scientist,and DevOps Engineer,ensuring accurate and personalised career recommendations.
+</p>
+</div>
+
+<div class="card">
+<h3>Dynamic Career Roadmaps</h3>
+<p>
+The platform generates structured career paths with clear role progression (APS → EL → SES). Each roadmap includes required technologies, tools, certifications, and practical steps to achieve career growth efficiently
+</p>
+</div>
+
+<div class="card">
+<h3>Skill Gap Analysis</h3>
+<p>
+The system identifies missing skills required for selected roles and provides targeted recommendations. This helps users focus on the right areas and become job-ready faster with practical learning guidance.
+</p>
+</div>
+
+</section>
+<section class="cards">
+
+<div class="card">
+<h3>Industry-Aligned Skill Mapping</h3>
+<p>
+Skills are mapped with real industry requirements, ensuring users learn what companies actually demand. The platform connects learning paths with real-world job expectations and evolving technology trends.
+</p>
+</div>
+
+<div class="card">
+<h3>Role-Based Recommendation Engine</h3>
+<p>
+Our AI-driven recommendation engine suggests career roles based on user profiles, current skills, and industry demand. It continuously adapts to provide the most relevant and future-proof career options.
+</p>
+</div>
+
+<div class="card">
+<h3>Smart Learning & Resource Guidance </h3>
+<p>
+The system provides curated resources including courses, tools, and practical projects. This helps users gain hands-on experience and build strong portfolios aligned with their chosen career path.
+</p>
+</div>
+
+</section>
+
+<div style="text-align:center;">
+<a href="#" class="btn">Discover Your Career Path</a>
+</div>
+
+
+<script>
+
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", () => {
+cards.forEach(card => {
+const rect = card.getBoundingClientRect();
+if(rect.top < window.innerHeight - 100){
+card.classList.add("show");
+}
+});
+});
+
+</script>
+
+</body>
+</html>

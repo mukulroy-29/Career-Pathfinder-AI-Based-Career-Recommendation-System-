@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, redirect, session
+from flask import Flask, request, jsonify, render_template, redirect, session, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import os
@@ -141,10 +141,9 @@ def login():
         password = request.form['password']
 
         # 1. Check if it is Admin
-        # Aap ye email aur password apni marzi se badal sakte hain
         if email == "admin@gmail.com" and password == "admin123":
             session['user'] = email
-            session['role'] = 'admin' # Admin role set kiya
+            session['role'] = 'admin' 
             return redirect('/admin')
 
         # 2. If not admin, check in Database for regular User
@@ -156,7 +155,7 @@ def login():
 
         if user and check_password_hash(user[4], password):
             session['user'] = user[1]
-            session['role'] = 'user' # Regular user role set kiya
+            session['role'] = 'user' 
             return redirect('/user_font')
 
         return "Invalid Email or Password ❌"
@@ -227,12 +226,10 @@ def update_profile():
     query = "UPDATE users SET first_name=?, last_name=?"
     params = [first_name, last_name]
 
-    # Agar user ne nayi profile pic upload ki hai
     if filename:
         query += ", profile_pic=?"
         params.append(filename)
     
-    # Agar user ne naya password type kiya hai (khali nahi chhoda)
     if new_password and new_password.strip() != "":
         hashed_password = generate_password_hash(new_password)
         query += ", password=?"
@@ -241,7 +238,6 @@ def update_profile():
     query += " WHERE email=?"
     params.append(email)
 
-    # Query run karenge
     c.execute(query, tuple(params))
     conn.commit()
     conn.close()
@@ -268,7 +264,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.pop('user', None)
-    session.pop('role', None) # Role ko bhi session se remove kiya
+    session.pop('role', None) 
     return redirect('/login')
 
 # ================= PREDICT =================
@@ -296,7 +292,6 @@ def predict():
 
 @app.route('/admin')
 def admin_dashboard():
-    # Security: Agar admin logged in nahi hai, toh page access nahi hoga
     if 'role' not in session or session['role'] != 'admin':
         return "Access Denied: Only Admins can access this page! ❌", 403
 
@@ -351,6 +346,21 @@ def admin_delete_user(user_id):
     conn.commit()
     conn.close()
     return redirect('/admin')
+
+
+# ================= CUSTOM ROUTES FOR CSS & JS (NO HTML CHANGES NEEDED) =================
+
+@app.route('/css/<path:filename>')
+def serve_css(filename):
+    return send_from_directory('css', filename)
+
+@app.route('/js/<path:filename>')
+def serve_js(filename):
+    return send_from_directory('js', filename)
+
+@app.route('/templates/<path:filename>')
+def serve_templates_assets(filename):
+    return send_from_directory('templates', filename)
 
 
 # ================= RUN =================
